@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Sibarat</string>
+    <string name="bg1">bg1</string>
+    <string name="bg2">bg2</string>
+    <string name="name_app">SIBARAT</string>
+    <string name="bg_app">Background App</string>
+    <string name="subtitle_app">Deteksi Bahasa Isyarat</string>
+    <string name="scan">Scan Foto</string>
+    <string name="kamus">Kamus</string>
+    <string name="done">Selesai</string>
+    <string name="result">Hasil Kata :</string>
 </resources>
