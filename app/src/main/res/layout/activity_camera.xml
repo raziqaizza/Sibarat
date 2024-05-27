@@ -31,9 +31,12 @@
                     android:layout_height="733dp"
                     android:contentDescription="@string/bg_app"
                     app:srcCompat="@drawable/background_sibarat_dev_purple"
-                    tools:ignore="MissingConstraints"
-                    tools:layout_editor_absoluteX="-4dp"
-                    tools:layout_editor_absoluteY="5dp" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
@@ -67,23 +70,77 @@
     <Button
         android:id="@+id/cam_button"
         android:layout_width="170dp"
-        android:layout_height="42dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="175dp"
+        android:layout_marginBottom="2dp"
+        android:backgroundTint="@color/primary"
+        android:contentDescription="@string/desc_scan"
         android:drawableTop="@drawable/ic_camera"
         android:drawablePadding="45dp"
-        android:layout_marginStart="175dp"
+        android:drawableTint="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/scan"
         app:layout_constraintEnd_toEndOf="@+id/scrollView2"
         app:layout_constraintStart_toStartOf="@+id/scrollView2" />
 
     <Button
-        android:id="@+id/galleri_button"
+        android:id="@+id/gallery_button"
         android:layout_width="170dp"
-        android:layout_height="42dp"
-        android:drawableTop="@drawable/ic_camera"
+        android:layout_height="45dp"
+        android:drawableTop="@drawable/ic_galery"
         android:drawablePadding="45dp"
         android:layout_marginEnd="180dp"
+        android:backgroundTint="@color/primary"
+        android:drawableTint="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/scan"
         app:layout_constraintEnd_toEndOf="@+id/scrollView2"
-        app:layout_constraintStart_toStartOf="@+id/scrollView2" />
+        app:layout_constraintStart_toStartOf="@+id/scrollView2"
+        android:layout_marginBottom="2dp"
+        android:contentDescription="@string/desc_gallery"/>
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/result_scan"
+        android:layout_marginTop="300dp"
+        android:textSize="24sp"
+        android:textFontWeight="600"
+        android:fontFamily="sans-serif"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/result_photo"
+        android:layout_width="350dp"
+        android:layout_height="450dp"
+        android:layout_marginBottom="220dp"
+        android:layout_above="@id/result"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="centerCrop"
+        tools:src="@tools:sample/avatars"
+        android:contentDescription="@string/foto_hasil"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="300dp"
+        android:layout_marginBottom="620dp"
+        android:contentDescription="@string/reset"
+        android:src="@drawable/ic_close"
+        app:fabCustomSize="40dp"
+        app:fabSize="auto"
+        android:backgroundTint="@color/primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
