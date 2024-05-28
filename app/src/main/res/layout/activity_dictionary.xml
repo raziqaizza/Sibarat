@@ -29,11 +29,22 @@
                     android:layout_width="419dp"
                     android:layout_height="733dp"
                     android:contentDescription="@string/bg_app"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/background_sibarat_dev_purple"
-                    tools:ignore="MissingConstraints"
-                    tools:layout_editor_absoluteX="-4dp"
-                    tools:layout_editor_absoluteY="5dp" />
+                    tools:ignore="MissingConstraints" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_dictionary"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -54,7 +54,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/word_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hasil_scan_string"
