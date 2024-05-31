@@ -2,118 +2,115 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
-
+    tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
+        android:id="@+id/background"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/background_sibarat_dev_purple"
+        android:contentDescription="@string/bg2"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/bg2"/>
+        app:srcCompat="@drawable/background_sibarat_dev_purple" />
 
-    <ScrollView
-        android:id="@+id/scrollView2"
+    <LinearLayout
+        android:id="@+id/header_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <ImageView
+                android:id="@+id/header_component"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:contentDescription="@string/bg_app"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/bg_view" />
+
+            <ImageView
+                android:id="@+id/header_details"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:contentDescription="@string/bg_app"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/bg_view" />
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/top_background"
-                    android:contentDescription="@string/bg_app"/>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </LinearLayout>
-    </ScrollView>
+                android:layout_height="match_parent"
+                android:contentDescription="@string/bg_app"
+                app:srcCompat="@drawable/top_background" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_sibarat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/name_app"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="72dp"
         android:layout_marginBottom="400sp"
         android:fontFamily="sans-serif"
-        android:textSize="60sp"
+        android:text="@string/name_app"
         android:textColor="@color/white"
-        android:textFontWeight="500"/>
+        android:textFontWeight="500"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="@id/header_layout"
+        app:layout_constraintStart_toStartOf="@id/header_layout"
+        app:layout_constraintTop_toTopOf="@id/header_layout" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_sibaratDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/subtitle_app"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:fontFamily="sans-serif"
         android:layout_marginBottom="320dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/subtitle_app"
+        android:textColor="@color/white"
         android:textSize="16sp"
-        android:textColor="@color/white"/>
+        app:layout_constraintEnd_toEndOf="@id/header_layout"
+        app:layout_constraintStart_toStartOf="@id/header_layout"
+        app:layout_constraintTop_toBottomOf="@id/tv_sibarat" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="133dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="15dp"
-        android:backgroundTint="@color/primary"
-        android:contentDescription="@string/scan"
-        android:text="@string/scan"
+    <LinearLayout
+        android:id="@+id/button_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textSize="18sp"
-        android:shadowColor="@color/black"/>
+        app:layout_constraintTop_toBottomOf="@id/header_layout">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="137dp"
-        android:layout_height="62dp"
-        android:text="@string/kamus"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="150dp"
-        android:backgroundTint="@color/primary"/>
+        <Button
+            android:id="@+id/btn_scanFoto"
+            style="@style/ButtonGeneral"
+            android:layout_width="150dp"
+            android:layout_height="64dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/btn_shape"
+            android:contentDescription="@string/scan"
+            android:shadowColor="@color/black"
+            android:text="@string/scan"
+            android:textSize="18sp" />
 
+        <Button
+            android:id="@+id/btn_kamus"
+            style="@style/ButtonGeneral"
+            android:layout_width="150dp"
+            android:layout_height="64dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/btn_shape"
+            android:text="@string/kamus"
+            android:textSize="18sp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

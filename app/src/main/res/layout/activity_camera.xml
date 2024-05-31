@@ -7,140 +7,119 @@
     android:layout_height="match_parent"
     tools:context=".CameraActivity">
 
-
-
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="743dp">
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="419dp"
-                    android:layout_height="733dp"
-                    android:contentDescription="@string/bg_app"
-                    app:srcCompat="@drawable/background_sibarat_dev_purple"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </LinearLayout>
-    </ScrollView>
-
-    <Button
-        android:id="@+id/result_camera"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="610dp"
-        android:text="@string/done"
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/bg_app"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="@color/primary"
-        android:textColor="@color/white"/>
+        app:srcCompat="@drawable/background_sibarat_dev_purple" />
 
-    <Button
-        android:id="@+id/scan"
+    <ImageView
+        android:id="@+id/iv_resultPhoto"
         android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="510dp"
-        android:text="@string/scan"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="450dp"
+        android:layout_above="@id/result"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="220dp"
+        android:contentDescription="@string/foto_hasil"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="@color/primary"
-        android:textColor="@color/white"/>
-
-    <Button
-        android:id="@+id/cam_button"
-        android:layout_width="170dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="175dp"
-        android:layout_marginBottom="2dp"
-        android:backgroundTint="@color/primary"
-        android:contentDescription="@string/desc_scan"
-        android:drawableTop="@drawable/ic_camera"
-        android:drawablePadding="45dp"
-        android:drawableTint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/scan"
-        app:layout_constraintEnd_toEndOf="@+id/scrollView2"
-        app:layout_constraintStart_toStartOf="@+id/scrollView2" />
-
-    <Button
-        android:id="@+id/gallery_button"
-        android:layout_width="170dp"
-        android:layout_height="45dp"
-        android:drawableTop="@drawable/ic_galery"
-        android:drawablePadding="45dp"
-        android:layout_marginEnd="180dp"
-        android:backgroundTint="@color/primary"
-        android:drawableTint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/scan"
-        app:layout_constraintEnd_toEndOf="@+id/scrollView2"
-        app:layout_constraintStart_toStartOf="@+id/scrollView2"
-        android:layout_marginBottom="2dp"
-        android:contentDescription="@string/desc_gallery"/>
+        tools:src="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/result_scan"
-        android:layout_marginTop="300dp"
-        android:textSize="24sp"
-        android:textFontWeight="600"
+        android:layout_marginTop="8dp"
         android:fontFamily="sans-serif"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/result_scan"
+        android:textFontWeight="600"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/iv_resultPhoto" />
 
-    <ImageView
-        android:id="@+id/result_photo"
-        android:layout_width="350dp"
-        android:layout_height="450dp"
-        android:layout_marginBottom="220dp"
-        android:layout_above="@id/result"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <LinearLayout
+        android:id="@+id/layout_camera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:scaleType="centerCrop"
-        tools:src="@tools:sample/avatars"
-        android:contentDescription="@string/foto_hasil"/>
+        app:layout_constraintTop_toBottomOf="@id/result">
+
+        <ImageButton
+            android:id="@+id/gallery_button"
+            android:layout_width="150dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:background="@drawable/btn_shape"
+            android:contentDescription="@string/desc_gallery"
+            android:gravity="center"
+            android:src="@drawable/ic_galery" />
+
+        <ImageButton
+            android:id="@+id/cam_button"
+            android:layout_width="150dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:background="@drawable/btn_shape"
+            android:contentDescription="@string/desc_scan"
+            android:src="@drawable/ic_camera" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_scan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_camera">
+
+        <Button
+            android:id="@+id/btn_scan"
+            style="@style/ButtonGeneral"
+            android:layout_width="308dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:background="@drawable/btn_shape"
+            android:text="@string/scan"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btn_selesai"
+            style="@style/ButtonGeneral"
+            android:layout_width="308dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:background="@drawable/btn_shape"
+            android:text="@string/done"
+            android:textColor="@color/white" />
+    </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="300dp"
-        android:layout_marginBottom="620dp"
+        android:backgroundTint="@color/primary"
         android:contentDescription="@string/reset"
         android:src="@drawable/ic_close"
         app:fabCustomSize="40dp"
-        app:fabSize="auto"
-        android:backgroundTint="@color/primary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintEnd_toEndOf="@id/iv_resultPhoto"
+        app:layout_constraintTop_toTopOf="@id/iv_resultPhoto" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
