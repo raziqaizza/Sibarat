@@ -16,4 +16,6 @@
     <string name="reset">Reset</string>
     <string name="hasil_scan_string">ABCDE</string>
     <string name="foto_detail">Detail Foto Pustaka</string>
+    <string name="reset_button">reset button</string>
+    <string name="home_button">home button</string>
 </resources>
