@@ -53,20 +53,10 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
+        android:layout_marginTop="64dp"
         app:layout_constraintEnd_toEndOf="@id/tv_resultText"
         app:layout_constraintStart_toStartOf="@id/tv_resultText"
         app:layout_constraintTop_toBottomOf="@id/tv_resultText">
-
-        <ImageButton
-            android:id="@+id/btn_home"
-            style="@style/ButtonGeneral"
-            android:layout_width="150dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:background="@drawable/btn_shape"
-            android:contentDescription="@string/home_button"
-            android:src="@drawable/ic_home" />
 
         <ImageButton
             android:id="@+id/btn_reset"
@@ -79,6 +69,5 @@
             android:contentDescription="@string/reset_button"
             android:src="@drawable/ic_reset" />
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

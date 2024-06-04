@@ -15,17 +15,12 @@ class ResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
 
         setupButton()
     }
 
     private fun setupButton() {
-        binding.btnHome.setOnClickListener {
-            val homeIntent = Intent(this@ResultActivity, MainActivity::class.java)
-            startActivity(homeIntent)
-            finish()
-        }
-
         binding.btnReset.setOnClickListener {
             val resetIntent = Intent(this@ResultActivity, CameraActivity::class.java)
             startActivity(resetIntent)
