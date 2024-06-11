@@ -1,11 +1,8 @@
-package com.example.sibarat
+package com.example.sibarat.activity.dictionary
 
 import android.os.Build
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.sibarat.data.Alphabet
 import com.example.sibarat.databinding.ActivityDetailDictionaryBinding
 

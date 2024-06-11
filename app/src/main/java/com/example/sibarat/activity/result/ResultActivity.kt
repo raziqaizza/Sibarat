@@ -1,11 +1,9 @@
-package com.example.sibarat
+package com.example.sibarat.activity.result
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.sibarat.activity.camera.CameraActivity
 import com.example.sibarat.databinding.ActivityResultBinding
 
 class ResultActivity : AppCompatActivity() {

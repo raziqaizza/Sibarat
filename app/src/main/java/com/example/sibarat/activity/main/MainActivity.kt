@@ -1,11 +1,14 @@
-package com.example.sibarat
+package com.example.sibarat.activity.main
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.sibarat.activity.camera.CameraActivity
+import com.example.sibarat.activity.dictionary.DictionaryActivity
 import com.example.sibarat.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,14 +1,8 @@
-package com.example.sibarat
+package com.example.sibarat.activity.dictionary
 
-import android.content.ClipData.Item
 import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.lifecycle.LiveData
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sibarat.data.Alphabet
 import com.example.sibarat.databinding.ItemDictionaryBinding
