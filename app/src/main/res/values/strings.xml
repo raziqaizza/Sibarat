@@ -8,7 +8,7 @@
     <string name="scan">Scan Foto</string>
     <string name="kamus">Kamus</string>
     <string name="done">Selesai</string>
-    <string name="result">Hasil Kata :</string>
+    <string name="result">Hasil Kata:</string>
     <string name="desc_scan">Scan Foto Button</string>
     <string name="desc_gallery">Gallery Foto Button</string>
     <string name="result_scan">ABCDE</string>

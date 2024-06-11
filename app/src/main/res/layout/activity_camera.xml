@@ -11,81 +11,81 @@
         android:id="@+id/background"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/bg"
         android:contentDescription="@string/bg_app"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/bg"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        />
-<!--     app:srcCompat="@drawable/background_sibarat_dev_purple"-->
-
-    <ImageView
-        android:id="@+id/iv_resultPhoto"
-        android:layout_width="350dp"
-        android:layout_height="350dp"
-        android:layout_above="@id/result"
+    <LinearLayout
+        android:id="@+id/layout_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:contentDescription="@string/foto_hasil"
-        android:scaleType="centerCrop"
         android:background="@drawable/bg_camera"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_image_placeholder" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_resultPhoto"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:layout_above="@id/result"
+            android:background="@drawable/bg_camera"
+            android:contentDescription="@string/foto_hasil"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_image_placeholder" />
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/result_scan"
+            android:textFontWeight="600"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toTopOf="@id/layout_buttons"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_resultPhoto" />
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@id/layout_buttons"
+        app:layout_constraintBottom_toBottomOf="@id/layout_picture"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_resultPhoto"
         tools:visibility="visible" />
-
-    <TextView
-        android:id="@+id/result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
-        android:text="@string/result_scan"
-        android:textFontWeight="600"
-        android:textSize="48sp"
-        android:textColor="@color/white"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@id/layout_buttons"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_resultPhoto" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/bg_container_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:src="@drawable/bg_container_bottom"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:id="@+id/layout_camera"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:gravity="center"
             android:orientation="horizontal"
-            android:layout_marginTop="28dp"
             app:layout_constraintBottom_toTopOf="@id/layout_scan"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -111,14 +111,13 @@
                 android:background="@drawable/btn_shape"
                 android:contentDescription="@string/desc_scan"
                 android:src="@drawable/ic_camera" />
-
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/layout_scan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="16dp"
             android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -131,14 +130,14 @@
                 android:layout_width="350dp"
                 android:layout_height="64dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="4dp"
                 android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginEnd="4dp"
                 android:layout_marginBottom="32dp"
                 android:background="@drawable/btn_shape"
                 android:text="@string/scan"
-                android:textSize="18sp"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/btn_selesai"
@@ -147,25 +146,21 @@
                 android:layout_height="64dp"
                 android:layout_gravity="center"
                 android:layout_margin="4dp"
-                android:textSize="18sp"
                 android:background="@drawable/btn_shape"
                 android:text="@string/done"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="18sp" />
         </LinearLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
     <ImageButton
         android:id="@+id/btn_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="2dp"
-        android:contentDescription="@string/reset"
         android:background="?android:attr/selectableItemBackground"
-        app:srcCompat="@drawable/ic_close"
-        app:layout_constraintEnd_toEndOf="@id/iv_resultPhoto"
-        app:layout_constraintTop_toTopOf="@id/iv_resultPhoto" />
-
+        android:contentDescription="@string/reset"
+        android:padding="2dp"
+        app:layout_constraintEnd_toEndOf="@id/layout_picture"
+        app:layout_constraintTop_toTopOf="@id/layout_picture"
+        app:srcCompat="@drawable/ic_close" />
 </androidx.constraintlayout.widget.ConstraintLayout>
