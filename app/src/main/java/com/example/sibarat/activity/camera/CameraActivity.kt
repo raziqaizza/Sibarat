@@ -6,18 +6,34 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.sibarat.R
+import com.example.sibarat.ViewModelFactory
 import com.example.sibarat.activity.result.ResultActivity
+import com.example.sibarat.data.Result
 import com.example.sibarat.databinding.ActivityCameraBinding
 import com.example.sibarat.getImageUri
+import com.example.sibarat.reduceFileImage
+import com.example.sibarat.uriToFile
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 
 class CameraActivity : AppCompatActivity() {
+    private val viewModel by viewModels<CameraViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
 
     private lateinit var binding: ActivityCameraBinding
     private var currentImageUri: Uri? = null
+    private lateinit var multipartBody: MultipartBody.Part
+    private var collectedAlphabet: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,11 +79,10 @@ class CameraActivity : AppCompatActivity() {
 
     private fun startCamera() {
         currentImageUri = getImageUri(this)
-        launcherCamera.launch(currentImageUri)
+        launcherCamera.launch(currentImageUri!!)
     }
 
     private fun setupButton() {
-
         binding.btnDelete.setOnClickListener {
             deleteImage()
             showToast("Gambar berhasil dihapus.")
@@ -82,8 +97,9 @@ class CameraActivity : AppCompatActivity() {
         }
 
         binding.btnSelesai.setOnClickListener {
-            val finsihIntent = Intent(this@CameraActivity, ResultActivity::class.java)
-            startActivity(finsihIntent)
+            val finishIntent = Intent(this@CameraActivity, ResultActivity::class.java)
+                .putExtra("RESULT", "$collectedAlphabet")
+            startActivity(finishIntent)
             finish()
         }
 
@@ -91,7 +107,59 @@ class CameraActivity : AppCompatActivity() {
             if (currentImageUri == null) {
                 return@setOnClickListener showToast("Masukkan gambar terlebih dahulu.")
             }
-            showToast("Fitur sedang dalam tahap development.")
+            uploadImage()
+            viewModel.uploadImage(multipartBody).observe(this) { result ->
+                if (result != null) {
+                    when (result) {
+                        is Result.Success -> {
+                            showLoading(false)
+                            val currentAlphabet = "${result.data.data.result}"
+                            collectedAlphabet += currentAlphabet
+                            binding.result.text = "$collectedAlphabet"
+                            AlertDialog.Builder(this).apply {
+                                setTitle("Berhasil")
+                                setMessage(result.data.data.suggestion)
+                                setPositiveButton("OK") { dialog, _ ->
+                                    dialog.dismiss()
+                                }
+                                create()
+                                show()
+                            }
+                        }
+                        is Result.Error -> {
+                            showLoading(false)
+                            AlertDialog.Builder(this).apply {
+                                setTitle("Error")
+                                setMessage(result.error)
+                                setPositiveButton("OK") { dialog, _ ->
+                                    dialog.dismiss()
+                                }
+                                create()
+                                show()
+                            }
+                        }
+                        Result.Loading -> {
+                            showLoading(true)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun uploadImage() {
+        currentImageUri?.let { uri ->
+            val imageFile = uriToFile(uri, this). reduceFileImage()
+
+            val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
+
+            val multipartImagePart = MultipartBody.Part.createFormData(
+                "image",
+                imageFile.name,
+                requestImageFile
+            )
+
+            multipartBody = multipartImagePart
         }
     }
 

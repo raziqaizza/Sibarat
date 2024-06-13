@@ -50,7 +50,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:fontFamily="sans-serif"
-            android:text="@string/result_scan"
             android:textFontWeight="600"
             android:textSize="36sp"
             app:layout_constraintBottom_toTopOf="@id/layout_buttons"
