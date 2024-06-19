@@ -8,8 +8,6 @@ import com.example.sibarat.data.Alphabet
 import com.example.sibarat.databinding.ItemDictionaryBinding
 
 class DictionaryAdapter(private val listAlphabet: ArrayList<Alphabet>): RecyclerView.Adapter<DictionaryAdapter.MyViewHolder>() {
-    private lateinit var onItemClickCallback: OnItemClickCallback
-
     class MyViewHolder(var binding: ItemDictionaryBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -28,13 +26,5 @@ class DictionaryAdapter(private val listAlphabet: ArrayList<Alphabet>): Recycler
             intentDetail.putExtra("key", listAlphabet[holder.adapterPosition])
             holder.itemView.context.startActivity(intentDetail)
         }
-    }
-
-    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
-    }
-
-    interface OnItemClickCallback {
-        fun onItemClicked(data: Alphabet)
     }
 }

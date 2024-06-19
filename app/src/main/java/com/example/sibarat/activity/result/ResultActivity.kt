@@ -16,7 +16,7 @@ class ResultActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         resultText = intent.getStringExtra(EXTRA_ITEMS).toString()
-        binding.tvResultText.text = "$resultText"
+        binding.tvResultText.text = resultText
 
         setupButton()
     }

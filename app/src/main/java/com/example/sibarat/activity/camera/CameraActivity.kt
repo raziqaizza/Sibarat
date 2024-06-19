@@ -21,9 +21,7 @@ import com.example.sibarat.reduceFileImage
 import com.example.sibarat.uriToFile
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
-import okhttp3.RequestBody.Companion.toRequestBody
 
 class CameraActivity : AppCompatActivity() {
     private val viewModel by viewModels<CameraViewModel> {
@@ -48,6 +46,7 @@ class CameraActivity : AppCompatActivity() {
         currentImageUri?.let {
             Log.d("showImage", "$it")
             binding.ivResultPhoto.setImageURI(it)
+            showDeleteBtn(true)
         }
     }
 
@@ -85,7 +84,15 @@ class CameraActivity : AppCompatActivity() {
     private fun setupButton() {
         binding.btnDelete.setOnClickListener {
             deleteImage()
+            showDeleteBtn(false)
             showToast("Gambar berhasil dihapus.")
+        }
+
+        binding.btnReset.setOnClickListener {
+            collectedAlphabet = ""
+            binding.result.text = collectedAlphabet
+            showResetBtn(false)
+            showToast("Result berhasil dihapus.")
         }
 
         binding.btnGallery.setOnClickListener {
@@ -107,13 +114,17 @@ class CameraActivity : AppCompatActivity() {
             if (currentImageUri == null) {
                 return@setOnClickListener showToast("Masukkan gambar terlebih dahulu.")
             }
+            if (collectedAlphabet?.length!! >= 5) {
+                return@setOnClickListener showToast("Scan limit sudah tercapai.")
+            }
             uploadImage()
             viewModel.uploadImage(multipartBody).observe(this) { result ->
                 if (result != null) {
                     when (result) {
                         is Result.Success -> {
                             showLoading(false)
-                            val currentAlphabet = "${result.data.data.result}"
+                            showResetBtn(true)
+                            val currentAlphabet = result.data.data.result
                             collectedAlphabet += currentAlphabet
                             binding.result.text = "$collectedAlphabet"
                             AlertDialog.Builder(this).apply {
@@ -165,6 +176,14 @@ class CameraActivity : AppCompatActivity() {
 
     private fun showLoading(isLoading: Boolean) {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    private fun showDeleteBtn(isDelete: Boolean) {
+        binding.btnDelete.visibility = if (isDelete) View.VISIBLE else View.GONE
+    }
+
+    private fun showResetBtn(isReset: Boolean) {
+        binding.btnReset.visibility = if (isReset) View.VISIBLE else View.GONE
     }
 
     private fun showToast(message: String) {

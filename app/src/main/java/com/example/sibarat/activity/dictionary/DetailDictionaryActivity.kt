@@ -16,10 +16,10 @@ class DetailDictionaryActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         val dataAlphabet = if (Build.VERSION.SDK_INT >= 33) {
-            intent.getParcelableExtra<Alphabet>(key, Alphabet::class.java)
+            intent.getParcelableExtra(KEY, Alphabet::class.java)
         } else {
             @Suppress("DEPRECATION")
-            intent.getParcelableExtra<Alphabet>(key)
+            intent.getParcelableExtra(KEY)
         }
 
         if (dataAlphabet != null) {
@@ -29,6 +29,6 @@ class DetailDictionaryActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val key = "key"
+        const val KEY = "key"
     }
 }

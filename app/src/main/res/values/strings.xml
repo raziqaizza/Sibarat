@@ -20,6 +20,7 @@
     <string name="home_button">home button</string>
     <string name="list">List</string>
     <string name="grid">Grid</string>
+    <string name="logo">Logo</string>
 
     <string-array name="data_alphabet">
         <item>A</item>
