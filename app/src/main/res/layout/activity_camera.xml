@@ -144,29 +144,50 @@
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageButton
-        android:id="@+id/btn_delete"
+    <LinearLayout
+        android:id="@+id/imageButton_Layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="?android:attr/selectableItemBackground"
-        android:contentDescription="@string/reset"
-        android:padding="2dp"
-        android:visibility="gone"
-        tools:visibility="visible"
-        app:layout_constraintEnd_toEndOf="@id/layout_picture"
+        android:orientation="vertical"
+        android:gravity="center"
         app:layout_constraintTop_toTopOf="@id/layout_picture"
-        app:srcCompat="@drawable/ic_close" />
+        app:layout_constraintEnd_toEndOf="@id/layout_picture">
 
-    <ImageButton
-        android:id="@+id/btn_reset"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/selectableItemBackground"
-        android:contentDescription="@string/reset"
-        android:padding="2dp"
-        android:visibility="gone"
-        tools:visibility="visible"
-        app:layout_constraintStart_toStartOf="@id/layout_picture"
-        app:layout_constraintTop_toTopOf="@id/layout_picture"
-        app:srcCompat="@drawable/ic_refresh" />
+        <ImageButton
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="@string/reset"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:layout_constraintEnd_toEndOf="@id/layout_picture"
+            app:layout_constraintTop_toTopOf="@id/layout_picture"
+            app:srcCompat="@drawable/ic_close" />
+
+        <ImageButton
+            android:id="@+id/btn_reset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="@string/reset"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:layout_constraintStart_toStartOf="@id/layout_picture"
+            app:layout_constraintTop_toTopOf="@id/layout_picture"
+            app:srcCompat="@drawable/ic_refresh" />
+
+        <ImageButton
+            android:id="@+id/btn_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="@string/reset"
+            app:layout_constraintStart_toStartOf="@id/layout_picture"
+            app:layout_constraintTop_toTopOf="@id/layout_picture"
+            app:srcCompat="@drawable/ic_question" />
+
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

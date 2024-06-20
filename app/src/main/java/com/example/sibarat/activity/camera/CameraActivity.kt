@@ -100,6 +100,21 @@ class CameraActivity : AppCompatActivity() {
             showResetBtn(false)
         }
 
+        binding.btnQuestion.setOnClickListener {
+            AlertDialog.Builder(this).apply {
+                setTitle("Cara Pakai:")
+                setMessage("1. Pastikan pencahayaan tidak terlalu gelap \n" +
+                        "2. Gambar tangan berada di tengah \n" +
+                        "3. Tidak ada objek lain pada gambar \n" +
+                        "4. Maksimal huruf adalah 5")
+                setPositiveButton("OK") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                create()
+                show()
+            }
+        }
+
         binding.btnGallery.setOnClickListener {
             startGallery()
         }
