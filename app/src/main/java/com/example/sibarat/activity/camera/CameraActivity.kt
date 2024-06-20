@@ -98,6 +98,7 @@ class CameraActivity : AppCompatActivity() {
             }
 
             showResetBtn(false)
+            showToast("Result berhasil dihapus.")
         }
 
         binding.btnQuestion.setOnClickListener {
