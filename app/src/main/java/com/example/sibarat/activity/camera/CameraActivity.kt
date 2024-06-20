@@ -89,10 +89,15 @@ class CameraActivity : AppCompatActivity() {
         }
 
         binding.btnReset.setOnClickListener {
-            collectedAlphabet = ""
+            val tempAlphabet = collectedAlphabet
+            collectedAlphabet = tempAlphabet!!.dropLast(1)
             binding.result.text = collectedAlphabet
+
+            if (collectedAlphabet != "") {
+                return@setOnClickListener showToast("Result berhasil dihapus.")
+            }
+
             showResetBtn(false)
-            showToast("Result berhasil dihapus.")
         }
 
         binding.btnGallery.setOnClickListener {
@@ -115,7 +120,7 @@ class CameraActivity : AppCompatActivity() {
                 return@setOnClickListener showToast("Masukkan gambar terlebih dahulu.")
             }
             if (collectedAlphabet?.length!! >= 5) {
-                return@setOnClickListener showToast("Scan limit sudah tercapai.")
+                return@setOnClickListener showToast("Hasil mencapai batas. Tekan tombol ulang untuk menghapus huruf.")
             }
             uploadImage()
             viewModel.uploadImage(multipartBody).observe(this) { result ->
@@ -187,6 +192,6 @@ class CameraActivity : AppCompatActivity() {
     }
 
     private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 }

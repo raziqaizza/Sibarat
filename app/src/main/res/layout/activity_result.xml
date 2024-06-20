@@ -12,7 +12,6 @@
         android:id="@+id/tv_hasilKata"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
         android:text="@string/result"
         android:textFontWeight="400"
         android:textSize="32sp"
